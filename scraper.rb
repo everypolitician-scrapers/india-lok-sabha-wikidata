@@ -8,4 +8,6 @@ names = EveryPolitician::Wikidata.wikipedia_xpath(
   xpath: '//table[.//th[.="Constituency"]]//tr/td[2]//a[not(@class="new")]/@title',
 ) 
 
-EveryPolitician::Wikidata.scrape_wikidata(names: { en: names }, batch_size: 100)
+by_category = WikiData::Category.new( 'Category:16th Lok Sabha members', 'en').member_titles
+
+EveryPolitician::Wikidata.scrape_wikidata(names: { en: names | by_category }, batch_size: 100)
