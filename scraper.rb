@@ -10,4 +10,7 @@ names = EveryPolitician::Wikidata.wikipedia_xpath(
 
 by_category = WikiData::Category.new( 'Category:16th Lok Sabha members', 'en').member_titles
 
-EveryPolitician::Wikidata.scrape_wikidata(names: { en: names | by_category })
+sparq = 'SELECT DISTINCT ?item WHERE { ?item p:P39 [ ps:P39 wd:Q16556694 ; pq:P2937 wd:Q15978395 ] }'
+ids = EveryPolitician::Wikidata.sparql(sparq)
+
+EveryPolitician::Wikidata.scrape_wikidata(ids: ids, names: { en: names | by_category })
