@@ -3,7 +3,7 @@
 
 require 'wikidata/fetcher'
 
-sparq = 'SELECT DISTINCT ?item WHERE { ?item p:P39 [ ps:P39 wd:Q16556694 ; pq:P2937 wd:Q15978395 ] }'
+sparq = 'SELECT DISTINCT ?item WHERE { ?item p:P39/ps:P39 wd:Q42509248 }'
 ids = EveryPolitician::Wikidata.sparql(sparq)
 
 EveryPolitician::Wikidata.scrape_wikidata(ids: ids)
